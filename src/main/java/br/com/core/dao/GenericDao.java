@@ -4,15 +4,17 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.core.entity.Entity;
+
 /**
  * @author Caio Duarte <ca.andrade.duarte@gmail.com>
  * 
- * @param <PrimaryKey>
+ * @param <K>
  *            Type of primary key.
- * @param <Entity>
+ * @param <E>
  *            Entity.
  */
-public interface GenericDao<PrimaryKey, Entity> {
+public interface GenericDao<K, E extends Entity<K>> {
 
 	/**
 	 * Returns the entity by its id (primary key)
@@ -22,7 +24,7 @@ public interface GenericDao<PrimaryKey, Entity> {
 	 * @param id
 	 * @return
 	 */
-	Entity getById(PrimaryKey id);
+	E getById(K id);
 
 	/**
 	 * If the entity has id it persists, if not, it merges.
@@ -32,21 +34,21 @@ public interface GenericDao<PrimaryKey, Entity> {
 	 * 
 	 * @param entity
 	 */
-	void save(Entity entity);
+	void save(E entity);
 
 	/**
 	 * @see {@link EntityManager#refresh(Object)}
 	 * 
 	 * @param entity
 	 */
-	void refresh(Entity entity);
+	void refresh(E entity);
 
 	/**
 	 * @see {@link EntityManager#remove(Object)}
 	 * 
 	 * @param entity
 	 */
-	void remove(Entity entity);
+	void remove(E entity);
 
 	/**
 	 * Saves all members of the list.
@@ -54,6 +56,6 @@ public interface GenericDao<PrimaryKey, Entity> {
 	 * 
 	 * @param entities
 	 */
-	void saveAll(List<Entity> entities);
+	void saveAll(List<E> entities);
 
 }
