@@ -1,0 +1,13 @@
+.settings/
+.metadata/
+*.war
+target/
+bin/
+*~
+*.class
+*.swp
+.svn
+.project
+.classpath
+*.jar
+*.ear
